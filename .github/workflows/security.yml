@@ -1,8 +1,7 @@
 name: Security
 
 # Which jobs run is decided by the "changes" job (see .github/scripts/changes.sh
-# and CONTRIBUTING.md): Go jobs for Go or shared changes, the extension job for
-# extension or shared changes, nothing for docs-only changes. Jobs are skipped
+# and CONTRIBUTING.md): Go jobs for any non-docs change, nothing for docs-only changes. Jobs are skipped
 # with job-level conditions, never workflow-level path filters, so the
 # "security-ok" check always reports and can be required.
 
@@ -26,8 +25,6 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       go: ${{ steps.detect.outputs.go }}
-      extension: ${{ steps.detect.outputs.extension }}
-      javascript: ${{ steps.detect.outputs.javascript }}
       codeql: ${{ steps.detect.outputs.codeql }}
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1

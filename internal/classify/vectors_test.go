@@ -10,11 +10,11 @@ import (
 	"testing"
 )
 
-// The JavaScript port in extension/src/classify is tested against the vectors
+// The JavaScript port in the extension repo is tested against the vectors
 // file generated here. TestVectorsFresh fails if the committed file is stale;
 // regenerate with: UPDATE_VECTORS=1 go test ./internal/classify -run TestVectorsFresh
 
-const vectorsPath = "../../extension/test/vectors.json"
+const vectorsPath = "testdata/vectors.json"
 
 type vector struct {
 	URL  string   `json:"url"`
@@ -178,6 +178,6 @@ func TestVectorsFresh(t *testing.T) {
 	// Compare ignoring line endings: a Windows checkout may convert LF to CRLF.
 	got = bytes.ReplaceAll(got, []byte("\r\n"), []byte("\n"))
 	if !bytes.Equal(got, want) {
-		t.Fatal("extension/test/vectors.json is stale; regenerate with: UPDATE_VECTORS=1 go test ./internal/classify -run TestVectorsFresh")
+		t.Fatal("internal/classify/testdata/vectors.json is stale (hand-synced with the extension repo; update both); regenerate with: UPDATE_VECTORS=1 go test ./internal/classify -run TestVectorsFresh")
 	}
 }

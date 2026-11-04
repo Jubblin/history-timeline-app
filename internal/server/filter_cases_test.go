@@ -16,8 +16,8 @@ import (
 	"history-timeline/internal/history"
 )
 
-// The cases are shared with the extension (extension/test/filter-cases.test.js).
-const filterCasesPath = "../../extension/test/filter-cases.json"
+// The cases are shared with the extension repo (hand-synced copy of its test/filter-cases.json).
+const filterCasesPath = "testdata/filter-cases.json"
 
 type filterCases struct {
 	Visits []struct {
