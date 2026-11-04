@@ -4,7 +4,7 @@ history-timeline reads browser history, which is personal data, so security and 
 
 ## Reporting a vulnerability
 
-Please report vulnerabilities privately using GitHub private vulnerability reporting: open the **Security** tab of [github.com/Jubblin/history-timeline](https://github.com/Jubblin/history-timeline) and choose **Report a vulnerability**.
+Please report vulnerabilities privately using GitHub private vulnerability reporting: open the **Security** tab of [github.com/Jubblin/history-timeline-app](https://github.com/Jubblin/history-timeline-app) and choose **Report a vulnerability**.
 
 - **Never open a public issue, pull request or discussion for a vulnerability.**
 - **Never include real browsing history** in a report: no real URLs, page titles, `History` files, `Local State` files or profile directories. Reproduce the problem with the synthetic fixture generator instead (`make fixture`, see [CONTRIBUTING.md](CONTRIBUTING.md)) and describe the steps.
@@ -51,7 +51,7 @@ In scope:
 - the rules-file parser (`internal/classify`);
 - bypasses of the "hide sensitive details" masking, where flagged text, URLs or domains still reach the page, the CSV export or the API results when masking is on.
 
-The Chrome extension is in its own repository ([Jubblin/history-timeline-extension](https://github.com/Jubblin/history-timeline-extension)); report extension issues there. `internal/classify/rules.json` is a hand-synced copy shared with it.
+The Chrome extension is in its own repository ([Jubblin/history-timeline](https://github.com/Jubblin/history-timeline)); report extension issues there. `internal/classify/rules.json` is a hand-synced copy shared with it.
 
 Out of scope:
 

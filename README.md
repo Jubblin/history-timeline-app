@@ -1,7 +1,7 @@
 # Browsing History Timeline
 
-[![CI](https://github.com/Jubblin/history-timeline/actions/workflows/ci.yml/badge.svg)](https://github.com/Jubblin/history-timeline/actions/workflows/ci.yml)
-[![Security](https://github.com/Jubblin/history-timeline/actions/workflows/security.yml/badge.svg)](https://github.com/Jubblin/history-timeline/actions/workflows/security.yml)
+[![CI](https://github.com/Jubblin/history-timeline-app/actions/workflows/ci.yml/badge.svg)](https://github.com/Jubblin/history-timeline-app/actions/workflows/ci.yml)
+[![Security](https://github.com/Jubblin/history-timeline-app/actions/workflows/security.yml/badge.svg)](https://github.com/Jubblin/history-timeline-app/actions/workflows/security.yml)
 
 A local, read-only browsing history audit tool: it shows a timeline of your browser history and flags sensitive visits. It supports Chromium-family browsers (Chrome, Chromium, Edge, Brave, Vivaldi, Opera).
 It ships as one self-contained binary with the web UI embedded. No data leaves your machine.
@@ -39,7 +39,7 @@ macOS denies terminal apps access to other apps' data under `~/Library/Applicati
    tar -xzf history-timeline_*_darwin_arm64.tar.gz   # or darwin_amd64
    cd history-timeline_*_darwin_*
    ```
-   The `grep` limits the check to the archive you downloaded. Alternatively run `gh attestation verify <archive> --repo Jubblin/history-timeline`.
+   The `grep` limits the check to the archive you downloaded. Alternatively run `gh attestation verify <archive> --repo Jubblin/history-timeline-app`. (Releases up to the repository split were published from [Jubblin/history-timeline](https://github.com/Jubblin/history-timeline); for those use `--repo Jubblin/history-timeline`.)
 2. The binaries are unsigned and not notarised, so Gatekeeper may block the first run. Control-click the file and choose Open, or run `xattr -d com.apple.quarantine ./history-timeline`. The checksum or attestation from step 1 is how you know the file is genuine.
 3. Run `./history-timeline --list-profiles` to see which profiles are found and why any directory was skipped.
 4. If it reports `permission denied`, open System Settings > Privacy & Security > Full Disk Access, enable your terminal app (Terminal, iTerm, ...), quit it completely (Cmd-Q) and reopen it, then run again.
@@ -59,7 +59,7 @@ Not tested on a Chromebook; this is based on how ChromeOS's Linux support is doc
 
 ## Browser extension
 
-The Chrome extension (Manifest V3) that shows the same kind of audit timeline for the profile it is installed in now lives in its own repository: [Jubblin/history-timeline-extension](https://github.com/Jubblin/history-timeline-extension). Install instructions, its privacy policy and its limits are there. Use it to audit ChromeOS's own Chrome, which this app cannot reach.
+The Chrome extension (Manifest V3) that shows the same kind of audit timeline for the profile it is installed in now lives in its own repository: [Jubblin/history-timeline](https://github.com/Jubblin/history-timeline). Install instructions, its privacy policy and its limits are there. Use it to audit ChromeOS's own Chrome, which this app cannot reach.
 
 `internal/classify/rules.json`, `web/static/ui-common.js` and the classifier and filter test fixtures under `internal/*/testdata/` are hand-synced copies of files in the extension repository. Change them in both repositories together.
 
