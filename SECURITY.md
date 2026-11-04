@@ -51,7 +51,7 @@ In scope:
 - the rules-file parser (`internal/classify`);
 - bypasses of the "hide sensitive details" masking, where flagged text, URLs or domains still reach the page, the CSV export or the API results when masking is on.
 
-The Chrome extension is in its own repository ([Jubblin/history-timeline](https://github.com/Jubblin/history-timeline)); report extension issues there. `internal/classify/rules.json` is a hand-synced copy shared with it.
+The Chrome extension is in its own repository ([Jubblin/history-timeline](https://github.com/Jubblin/history-timeline)); report extension issues there. `internal/classify/rules.json` is a hand-synced copy of the extension repository's `extension/src/classify/rules.json`, which is the source of truth.
 
 Out of scope:
 

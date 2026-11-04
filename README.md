@@ -61,7 +61,7 @@ Not tested on a Chromebook; this is based on how ChromeOS's Linux support is doc
 
 The Chrome extension (Manifest V3) that shows the same kind of audit timeline for the profile it is installed in now lives in its own repository: [Jubblin/history-timeline](https://github.com/Jubblin/history-timeline). Install instructions, its privacy policy and its limits are there. Use it to audit ChromeOS's own Chrome, which this app cannot reach.
 
-`internal/classify/rules.json`, `web/static/ui-common.js` and the classifier and filter test fixtures under `internal/*/testdata/` are hand-synced copies of files in the extension repository. Change them in both repositories together.
+`internal/classify/rules.json`, `web/static/ui-common.js` and the classifier and filter test fixtures under `internal/*/testdata/` are hand-synced with the extension repository. The extension repository is the source of truth for `rules.json` and `ui-common.js` (change them there first, then copy them here); the vectors are regenerated here and copied back; `filter-cases.json` is changed in both together.
 
 ## Use it on your real history
 

@@ -47,7 +47,7 @@ Option 2: install Go 1.26 or newer locally and run the commands below directly.
 | `go vet ./...` | must be clean |
 | `go test -race ./...` | must pass |
 
-The Chrome extension lives in [its own repository](https://github.com/Jubblin/history-timeline). `internal/classify/rules.json`, `web/static/ui-common.js`, `internal/classify/testdata/vectors.json` and `internal/server/testdata/filter-cases.json` are hand-synced with it: when you change one, make the matching change there. (`UPDATE_VECTORS=1 go test ./internal/classify -run TestVectorsFresh` regenerates the vectors.)
+The Chrome extension lives in [its own repository](https://github.com/Jubblin/history-timeline). `internal/classify/rules.json`, `web/static/ui-common.js`, `internal/classify/testdata/vectors.json` and `internal/server/testdata/filter-cases.json` are hand-synced with it. The extension repository is the source of truth for `rules.json` and `ui-common.js`: change those there first and copy them here. Regenerate the vectors here with the command below and copy them back to the extension's `test/vectors.json`; `filter-cases.json` is edited in both repositories together. (`UPDATE_VECTORS=1 go test ./internal/classify -run TestVectorsFresh` regenerates the vectors.)
 
 Try the UI with `make run-fixture` and open the URL it prints (it contains the per-run access token). With curl, send `-H "X-History-Timeline-Token: <token>"`. The token cookie is `Secure`, so use a Chromium-based browser or Firefox for the UI (Safari does not send Secure cookies over http); the cookie must stay `Secure`.
 
@@ -110,7 +110,7 @@ Once the workflow succeeds:
 
 Re-running the workflow for a tag whose release is still a draft replaces the draft's assets; if the release is already published the job fails with a clear message and changes nothing. Attestations are created at build time for the archives and `SHA256SUMS`, so the draft state does not affect them. Check a download with `sha256sum -c SHA256SUMS` or `gh attestation verify <file> --repo Jubblin/history-timeline-app` (`--repo Jubblin/history-timeline` for releases from before the split).
 
-CI (`ci.yml`) and the security scans (`security.yml`) run on every pull request. Workflow actions are pinned to full commit SHAs and updated by Renovate.
+CI (`ci.yml`) and the security scans (`security.yml`) run on every pull request. Workflow actions are pinned to full commit SHAs and updated by Renovate. Renovate runs `go mod tidy` after Go dependency updates (`postUpdateOptions: gomodTidy`), so its Go PRs should already satisfy the "go mod tidy leaves no diff" check.
 
 ## Pull requests
 
